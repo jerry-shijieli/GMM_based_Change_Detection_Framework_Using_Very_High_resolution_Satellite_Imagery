@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85c9c903-3739-4a09-a36c-5c074d9051df" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dataset/k02-05m-cropped.png" afterPath="$PROJECT_DIR$/dataset/k02-05m-cropped.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dataset/k12-05m-cropped.png" afterPath="$PROJECT_DIR$/dataset/k12-05m-cropped.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/image_processing.ipynb" afterPath="$PROJECT_DIR$/code/image_processing.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/.ipynb_checkpoints/image_comparison-checkpoint.ipynb" afterPath="$PROJECT_DIR$/code/.ipynb_checkpoints/image_comparison-checkpoint.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/image_comparison.ipynb" afterPath="$PROJECT_DIR$/code/image_comparison.ipynb" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,8 +26,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
     <option name="width" value="1280" />
-    <option name="height" value="800" />
+    <option name="height" value="728" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -82,7 +82,6 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="FullScreen" value="true" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -98,7 +97,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="728" extended-state="1" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
