@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="85c9c903-3739-4a09-a36c-5c074d9051df" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/.ipynb_checkpoints/image_comparison_v3-checkpoint.ipynb" afterPath="$PROJECT_DIR$/code/.ipynb_checkpoints/image_comparison_v3-checkpoint.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/GaussianMixtureModel.py" afterPath="$PROJECT_DIR$/code/GaussianMixtureModel.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/image_comparison_v3.ipynb" afterPath="$PROJECT_DIR$/code/image_comparison_v3.ipynb" />
-    </list>
+    <list default="true" id="85c9c903-3739-4a09-a36c-5c074d9051df" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
