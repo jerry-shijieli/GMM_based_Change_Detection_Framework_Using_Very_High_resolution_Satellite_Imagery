@@ -1,6 +1,7 @@
 import numpy as np
 import random as rnd
 import scipy.stats as stats
+import operator
 
 
 class GaussianMixtureModel:
@@ -15,6 +16,8 @@ class GaussianMixtureModel:
         # initialize the parameters of GMM
         self.priors = self.initialize_prior()
         self.gaussians = self.initialize_gaussian_distribution(train_data)
+        print self.priors # debug
+        print self.gaussians # debug
         train_size = len(train_data)
         p_ij = np.matrix([[0]*self.n_components]*train_size, dtype=np.float64) # membership prob
         iter_count = 0
@@ -25,7 +28,7 @@ class GaussianMixtureModel:
                 x_i = train_data[i]
                 prob_sum = 0
                 for j in range(self.n_components):
-                    mu = self.guassians[j][0]
+                    mu = self.gaussians[j][0]
                     tho = self.gaussians[j][1]
                     p_ij[i, j] = self.priors[j] * stats.norm(mu, tho).pdf(x_i) # prob of component j
                     prob_sum += p_ij[i, j]
@@ -39,18 +42,27 @@ class GaussianMixtureModel:
                 prior = p_j / total_p_ij # estimate prior
                 delta_prior += abs(self.priors[j] - prior)
                 self.priors[j] = prior
-                mu = np.sum(map(lambda x,p: x*p, train_data, np.hstack(p_ij[:,j]))) / p_j # estimate mean
-                tho = np.sum(map(lambda x,p: p*(x-mu)**2, train_data, np.hstack(p_ij[:,j]))) / p_j # estimate covariance
+                weights = np.hstack(p_ij[:,j]).tolist()[0]
+                #print weights # debug
+                mu = np.sum(map(lambda x,p: x*p, train_data, weights)) / p_j # estimate mean
+                tho = np.sum(map(lambda x,p: p*(x-mu)**2, train_data, weights)) / p_j # estimate covariance
                 delta_mu += abs(self.gaussians[j][0] - mu)
                 delta_tho += abs(self.gaussians[j][1] - tho)
+                print mu, tho # debug
                 self.gaussians[j][0] = mu
                 self.gaussians[j][1] = tho
             # check convergence
-            if max([delta_prior, delta_mu, delta_tho])<self.tol or iter_count>=max_iter:
+            if max([delta_prior, delta_mu, delta_tho])<self.tol or iter_count>=self.max_iter:
                 break
 
     def predict(self, test_data):
-        pass
+        labels = list()
+        for data in test_data:
+            posteriors = map(lambda pr,gs: pr*stats.norm(gs[0], gs[1]).pdf(data), self.priors, self.gaussians)
+            #print posteriors # debug
+            index, _ = max(enumerate(posteriors), key=operator.itemgetter(1))
+            labels.append(index)
+        return labels
 
     def initialize_prior(self):
         priors = list()
@@ -66,8 +78,8 @@ class GaussianMixtureModel:
         minVal, maxVal = min(train_data), max(train_data)
         gaussians = list()
         interval = maxVal - minVal
-        for _ in range(self.n_components):
-            mu = rnd.random()*interval + minVal # mean
-            tho = rnd.random()*interval # variance
+        for x in range(self.n_components):
+            mu = rnd.random()*interval*x/self.n_components + minVal # mean
+            tho = rnd.random()*interval/self.n_components # variance
             gaussians.append([mu, tho])
         return gaussians
