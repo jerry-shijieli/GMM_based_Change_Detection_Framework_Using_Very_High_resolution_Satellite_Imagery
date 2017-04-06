@@ -90,7 +90,7 @@ class GaussianMixtureModel:
             #print i, ct # debug
             gaussians[i, 0] = ct
             gaussians[i, 1] = np.sqrt(gaussians[i, 1]/(counts[i]+self.cmp))
-            priors[i] = float(counts[i])/size_of_data
+            priors[i] = float(counts[i])/(size_of_data+self.cmp)
         self.gaussians = gaussians.tolist()
         self.priors = priors.tolist()
 
