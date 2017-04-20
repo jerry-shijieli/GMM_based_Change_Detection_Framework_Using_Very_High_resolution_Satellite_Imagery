@@ -50,7 +50,7 @@ python high_resolution_image_change_detection.py
 
 ### Expected Results
 
-The final product of our code execution should be a pair of maps on the same landscape area with major changes marked in transparent color blocks. For example,
+The final product of our code execution should be a pair of maps on the same landscape area with major changes marked in transparent color blocks. For example, temporal changes are detected and marked as red and yellow blocks in the following pair of maps
 
 ![Change Detection on Maps](https://github.com/jerry-shijieli/CSC522_GMM_on_Satellite_Image_Change_Detection/blob/master/result/change%20detection.png)
 
