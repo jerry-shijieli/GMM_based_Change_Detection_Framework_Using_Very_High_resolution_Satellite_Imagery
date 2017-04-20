@@ -1,6 +1,5 @@
 # CSC522 Course Project: GMM based Change Detection Framework Using Very High-resolution Satellite Imagery
 
-## Motivation and Background
 
 High resolution images provided by satellites are good resource to use to identify and quantify landscapes changes. We explore a detection method to identify landscape changes using high resolution satellite images. This grid based method is helpful in Bi-temporal change detection. By given two satellite images from the same area, it can identify changes accurately. In our project, we divide each high-resolution satellite image into equally-sized square grids and fit each grid of RGB pixels using one Gaussian distribution. Next, we use symmetric Kullback-Leibler (KL) divergence of two Gaussian distributions at the same location of various time as metrics of image changes. Then a Gaussian Mixture Model (GMM) is used to cluster the KL divergence map into various levels of change, which is a good visualization of change detection between the two images over time.
 
