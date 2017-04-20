@@ -52,7 +52,7 @@ python high_resolution_image_change_detection.py
 
 The final product of our code execution should be a pair of maps on the same landscape area with major changes marked in transparent color blocks. For example,
 
-![alt tag](http://url/to/img.png)
+![Change Detection on Maps](https://github.com/jerry-shijieli/CSC522_GMM_on_Satellite_Image_Change_Detection/blob/master/result/change%20detection.png)
 
 For more details and intermediate results, please check the ipython notebooks in the folder [code](https://github.com/jerry-shijieli/CSC522_GMM_on_Satellite_Image_Change_Detection/tree/master/code)
 
