@@ -86,6 +86,6 @@ This project is licensed under the MIT License - see the [MIT LICENSE](https://c
 ## Acknowledgments
 
 * Thank Prof. Raju Vatsavai for the support and advice on this project.
-* Thank all TAs of CSC522 course for the suggestion on both algorithms and software tools to faciliate project development.
-* Thank all team members for contributions on both project idea design, software implementation and experiment documentation.
+* Thank all TAs of CSC522 course for suggestions on both algorithms and software tools to faciliate project development.
+* Thank all team members for contributions on project idea design, software implementation and experiment documentation.
 
