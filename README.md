@@ -1,5 +1,4 @@
-# CSC522_Course_Project
-# GMM based Change Detection Framework Using Very High-resolution Satellite Imagery
+# CSC522 Course Project: GMM based Change Detection Framework Using Very High-resolution Satellite Imagery
 
 ## Motivation and Background
 
