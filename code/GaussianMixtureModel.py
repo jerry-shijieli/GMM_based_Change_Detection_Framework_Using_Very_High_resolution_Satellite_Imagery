@@ -4,9 +4,10 @@ import scipy.stats as stats
 import operator
 from sklearn.cluster import KMeans
 from collections import Counter
+import progressbar as pgb
 
 class GaussianMixtureModel:
-    def __init__(self, n_components=1, max_iter=100, tolerance=1e-3):
+    def __init__(self, n_components=1, max_iter=30, tolerance=1e-3):
         self.n_components = n_components # # of components in GMM
         self.max_iter = max_iter # max iteration of EM
         self.tol = tolerance # convergence threshold of EM
@@ -27,10 +28,13 @@ class GaussianMixtureModel:
         iter_count = 0
         while (True): # repeat E-M until convergence
             iter_count += 1
+            print "GMM EM iteration #"+str(iter_count)+"..."
             self.logsum = np.sum(map(self.log_sum, train_data))
             #print iter_count, self.logsum # debug
             # E-step: estimate the conditional distribution of membership given data
-            for i in range(train_size):
+            print "\tE-step"
+            bar = pgb.ProgressBar()
+            for i in bar(range(train_size)):
                 x_i = train_data[i]
                 prob_sum = 0
                 for j in range(self.n_components):
@@ -41,9 +45,11 @@ class GaussianMixtureModel:
                 for j in range(self.n_components):
                     p_ij[i, j] /= (prob_sum+self.cmp) # normalize for membership prob
             # M-step: estimate parameters of GMM
+            print "\tM-step"
             delta_mu, delta_tho, delta_prior = 0, 0, 0 # change of parameters against last iteration
             total_p_ij = np.sum(p_ij)
-            for j in range(self.n_components):
+            bar = pgb.ProgressBar()
+            for j in bar(range(self.n_components)):
                 p_j = np.sum(p_ij[:, j])
                 prior = p_j / (total_p_ij+self.cmp) # estimate prior
                 delta_prior += abs(self.priors[j] - prior)
@@ -58,14 +64,18 @@ class GaussianMixtureModel:
                 self.gaussians[j][0] = mu
                 self.gaussians[j][1] = (tho+self.cmp)
             # check convergence
+            print "\tCompute log likelihood"
             logsum = np.sum(map(self.log_sum, train_data))
             if abs(self.logsum-logsum)<self.tol or iter_count>=self.max_iter:
                 break
             self.logsum = logsum
+            print "\t\tExpected log likelihood = "+str(logsum)
 
     def predict(self, test_data):
+        print "Predicting..."
         labels = list()
-        for data in test_data:
+        bar = pgb.ProgressBar()
+        for data in bar(test_data):
             posteriors = map(lambda pr,gs: pr*stats.norm(gs[0], gs[1]).pdf(data), self.priors, self.gaussians)
             #print posteriors # debug
             index, _ = max(enumerate(posteriors), key=operator.itemgetter(1))
@@ -93,6 +103,7 @@ class GaussianMixtureModel:
             priors[i] = float(counts[i])/(size_of_data+self.cmp)
         self.gaussians = gaussians.tolist()
         self.priors = priors.tolist()
+        print "Initialization of GMM parameters is done!"
 
     def log_sum(self, x):
         return np.sum(map(lambda pr,gs: pr*stats.norm(gs[0], np.sqrt(gs[1])).pdf(x), self.priors, self.gaussians))

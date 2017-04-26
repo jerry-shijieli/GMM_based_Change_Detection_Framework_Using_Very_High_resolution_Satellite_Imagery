@@ -44,6 +44,23 @@ def image_to_gaussian_distribution(image):
     data_cov = np.cov(data, rowvar=False) # covariance matrix of gaussian distribution
     return (data_mean, data_cov)
 
+# approximate an image by a Gaussian distribution including pixel coordinates
+# @param image matrix
+# @return mean and variance matrix for this gaussian distribution
+def image_to_gaussian_distribution_withxy(image):
+    # convert image pixels into list of vectors
+    data = list() # convert each pixel info into a vector
+    rows, cols, channels = image.shape
+    for r in range(rows):
+        index = zip([r]*cols, range(cols))
+        img_info = zip(index, image[r])
+        vecs = map(lambda x: np.concatenate((np.array(x[0]), x[1]),axis=0) , img_info)
+        data.extend(vecs)
+    # fit data into a gaussian distribution
+    data_mean = np.mean(data, axis=0) # mean vector of gaussian distribution
+    data_cov = np.cov(data, rowvar=False) # covariance matrix of gaussian distribution
+    return (data_mean, data_cov)
+
 # compute the Kullback-Leibler(KL) divergence between two Gaussian distributions
 # @param mean and covariance matrix of two gaussian distributions
 # @return KL divergence (asymmetric)
@@ -81,7 +98,7 @@ if __name__ == '__main__':
     fig.savefig("Comparison_of_cropped_temporal_satellite_images.png")
 
     # paraemeter setting to divide image into square grids
-    grid_step = 280  # unit in pixel, should be divisible to the image size
+    grid_step = 140  # unit in pixel, should be divisible to the image size
     image_grids_1 = divide_image_into_grids(img1, grid_step)
     image_grids_2 = divide_image_into_grids(img2, grid_step)
 
@@ -90,10 +107,10 @@ if __name__ == '__main__':
     num_of_cols = len(image_grids_1[0])
     image_gaussians_1 = list()
     for r in range(num_of_rows):
-        image_gaussians_1.append(map(image_to_gaussian_distribution, image_grids_1[r]))
+        image_gaussians_1.append(map(image_to_gaussian_distribution_withxy, image_grids_1[r]))
     image_gaussians_2 = list()
     for r in range(num_of_rows):
-        image_gaussians_2.append(map(image_to_gaussian_distribution, image_grids_2[r]))
+        image_gaussians_2.append(map(image_to_gaussian_distribution_withxy, image_grids_2[r]))
 
     # generate KL divergence map based on Gaussian distribution of each grid
     KL_div_map = list()
@@ -127,7 +144,7 @@ if __name__ == '__main__':
     K = 4  # number of gaussian mixtures
     # from sklearn import mixture
     # gmm = mixture.GaussianMixture(n_components=K)
-    gmm = GaussianMixtureModel(n_components=K)
+    gmm = GaussianMixtureModel(n_components=K, max_iter=20, tolerance=1e-2)
     gmm.fit(KL_samples)  # training GMM model
 
     # Apply GMM clustering model to categorize the changes on KL divergence map
