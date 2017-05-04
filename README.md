@@ -79,10 +79,6 @@ We use both [git](https://git-scm.com) and hand-labeled file names for versionin
 * **Zifan Nan**  *(email: znan@ncsu.edu)* 
 * **Rui Liu**  *(email: rliu13@ncsu.edu)* 
 
-## License
-
-This project is licensed under the MIT License - see the [MIT LICENSE](https://choosealicense.com/licenses/mit/) file for details.
-
 ## Acknowledgments
 
 * Thank Prof. Raju Vatsavai for the support and advice on this project.
