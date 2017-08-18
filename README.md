@@ -70,7 +70,7 @@ All team members contribute equivalently to this development of this project. Se
 
 We use both [git](https://git-scm.com) and hand-labeled file names for versioning. The existence of various versions at the same time is for the sake of result comparisons and code optimization.
 
-## Authors
+<!---## Authors
 
 * **Shijie Li**  *(email: sli41@ncsu.edu)* 
 * **Tianpei Xia**  *(email: txia4@ncsu.edu)* 
@@ -78,6 +78,7 @@ We use both [git](https://git-scm.com) and hand-labeled file names for versionin
 * **Zhiren Lu**  *(email: nzlu@ncsu.edu)* 
 * **Zifan Nan**  *(email: znan@ncsu.edu)* 
 * **Rui Liu**  *(email: rliu13@ncsu.edu)* 
+-->
 
 ## Acknowledgments
 
