@@ -1,4 +1,4 @@
-# CSC522 Course Project: GMM based Change Detection Framework Using Very High-resolution Satellite Imagery
+# Project: GMM based Change Detection Framework Using Very High-resolution Satellite Imagery
 
 
 High resolution images provided by satellites are good resource to use to identify and quantify landscapes changes. We explore a detection method to identify landscape changes using high resolution satellite images. This grid based method is helpful in Bi-temporal change detection. By given two satellite images from the same area, it can identify changes accurately. In our project, we divide each high-resolution satellite image into equally-sized square grids and fit each grid of RGB pixels using one Gaussian distribution. Next, we use symmetric Kullback-Leibler (KL) divergence of two Gaussian distributions at the same location of various time as metrics of image changes. Then a Gaussian Mixture Model (GMM) is used to cluster the KL divergence map into various levels of change, which is a good visualization of change detection between the two images over time.
@@ -70,7 +70,7 @@ All team members contribute equivalently to this development of this project. Se
 
 We use both [git](https://git-scm.com) and hand-labeled file names for versioning. The existence of various versions at the same time is for the sake of result comparisons and code optimization.
 
-<!---## Authors
+## Team Members
 
 * **Shijie Li**  *(email: sli41@ncsu.edu)* 
 * **Tianpei Xia**  *(email: txia4@ncsu.edu)* 
@@ -78,11 +78,10 @@ We use both [git](https://git-scm.com) and hand-labeled file names for versionin
 * **Zhiren Lu**  *(email: nzlu@ncsu.edu)* 
 * **Zifan Nan**  *(email: znan@ncsu.edu)* 
 * **Rui Liu**  *(email: rliu13@ncsu.edu)* 
--->
 
 ## Acknowledgments
 
 * Thank Prof. Raju Vatsavai for the support and advice on this project.
-* Thank all TAs of CSC522 course for suggestions on both algorithms and software tools to faciliate project development.
+* Thank all TAs for suggestions on both algorithms and software tools to faciliate project development.
 * Thank all team members for contributions on project idea design, software implementation and experiment documentation.
 
